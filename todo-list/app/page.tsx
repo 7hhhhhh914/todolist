@@ -64,7 +64,7 @@ export default function TodoApp() {
   }, [selectedDate])
 
 if (!selectedDate){
-  return <div className="min-h-screen bg-secondary" />
+  return <div className="min-h-screen bg-secondary" />}
   
   const year = selectedDate.getFullYear()
   const month = selectedDate.getMonth()
