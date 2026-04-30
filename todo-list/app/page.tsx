@@ -30,7 +30,7 @@ function getDaysInMonth(year: number, month: number): number {
 }
 
 export default function TodoApp() {
-  const [selectedDate, setSelectedDate] = useState(new Date())
+  const [selectedDate, setSelectedDate] = useState<Date | null>(null)
   const [data, setData] = useState<TodoData>({})
   const [inputValue, setInputValue] = useState("")
   const [filter, setFilter] = useState<FilterType>("all")
@@ -44,6 +44,7 @@ export default function TodoApp() {
     if (saved) {
       setData(JSON.parse(saved))
     }
+    setSelectedDate(new Date())
   }, [])
 
   // 保存数据到 localStorage
@@ -62,6 +63,9 @@ export default function TodoApp() {
     }
   }, [selectedDate])
 
+if (!selectedDate){
+  return <div className="min-h-screen bg-secondary" />
+  
   const year = selectedDate.getFullYear()
   const month = selectedDate.getMonth()
   const day = selectedDate.getDate()
